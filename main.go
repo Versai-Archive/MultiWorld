@@ -33,6 +33,11 @@ func (manager *WorldManager) LoadWorld(worldName string) error {
 		return fmt.Errorf("error loading world: %v", err)
 	}
 
+	p.SaveSettings(&world.Settings{
+		Name: worldName,
+		Spawn: cube.Pos{0, -55, 0},
+	})
+
 	w := world.Config{
 		Dim:      world.Overworld,
 		Log:      manager.log,
